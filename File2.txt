@@ -1,0 +1,23 @@
+#include "StdAfx.h"
+#include "FtdiDeviceX.h"
+#include "msclr/marshal.h"
+//--
+namespace FtdiNetx64
+{
+	FtdiDeviceX::FtdiDeviceX(void)
+	{
+		p = new w32switchx();
+		_open = false;
+	}
+
+
+	FtdiDeviceX::~FtdiDeviceX(void)
+	{
+		if (IsOpen())
+		{
+			Close();
+		}
+	}
+
+
+
