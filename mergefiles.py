@@ -1,13 +1,18 @@
-import sys, getopt
+import sys
 from os import write
 
-
 print("Arguments count: {0}".format(len(sys.argv)))
-print("Arguments count: " + " " + str(len(sys.argv)))
+for a in sys.argv:
+    print a
 
+# if sys.argv < 2:
+#     print("Please enter at least 2 values. ") 
 
-content1 = open('file1.txt', 'r')
-content2 = open('file2.txt', 'r')
+file1 = sys.argv[1]#input("First file: ")
+file2 = sys.argv[2]#input("Second file: ")
+
+content1 = open(file1, 'r')
+content2 = open(file2, 'r')
 
 # for line in content1:
 #     print(line.rstrip())
