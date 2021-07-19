@@ -1,5 +1,6 @@
 import os
-import glob
+import shutil
+import fileinput 
 
 #print(os.listdir("C:\SWDevelopment\ULActions"))
 
@@ -65,6 +66,7 @@ search_words2 = set(['public'])
 for item in os.listdir(r'C:\SWDevelopment\ULActions'):
     f = open("C:\\SWDevelopment\\ULActions\\" + item, "r")
     sentences = f.readlines()
+    t = open("C:\\SWDevelopment\\ulactionssaved\\" + item, "w")
     for sentence in sentences: 
         words_in_sentence = set(sentence.split())
         if words_in_sentence.intersection(search_words):
@@ -74,7 +76,17 @@ for item in os.listdir(r'C:\SWDevelopment\ULActions'):
             words2 = sentence.split()
             if len(words2) == 3: 
                 print("The properties are: {} ".format(words2[2]))
+                t.write("this is the new line \n")
+        t.write(sentence)
+    t.close()
     f.close()
+
+    # f = open("C:\\SWDevelopment\\ULActions" + item, "w")
+    # shutil.copy("C:\\SWDevelopment\\ULActions\\" + item, "C:\\SWDevelopment\\ulactionssaved\\" + item)
+    # f.close()
+
+
+   
 
 
 
