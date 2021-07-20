@@ -64,9 +64,10 @@ search_words = set(['class'])
 search_words2 = set(['public'])
 
 for item in os.listdir(r'C:\SWDevelopment\ULActions'):
+    list3 = []
     f = open("C:\\SWDevelopment\\ULActions\\" + item, "r")
     sentences = f.readlines()
-    t = open("C:\\SWDevelopment\\ulactionssaved\\" + item, "w")
+    # t = open("C:\\SWDevelopment\\ulactionssaved\\" + item, "w")
     for sentence in sentences: 
         words_in_sentence = set(sentence.split())
         if words_in_sentence.intersection(search_words):
@@ -76,11 +77,15 @@ for item in os.listdir(r'C:\SWDevelopment\ULActions'):
             words2 = sentence.split()
             if len(words2) == 3: 
                 print("The properties are: {} ".format(words2[2]))
-                t.write("this is the new line \n")
-        t.write(sentence)
-    t.close()
+                # t.write("this is the new line \n")
+                # list3.append("this is a new line \n")
+                list3.insert(len(list3) -1, '\t\t[ULProperty("{0}", Direction = "InOut", Optional = "No")]\n'.format(words2[2]))
+        list3.append(sentence)
     f.close()
-
+    t = open("C:\\SWDevelopment\\ulactionssaved\\" + item, "w")
+    for line in list3:
+        t.write(line)
+    t.close()
     # f = open("C:\\SWDevelopment\\ULActions" + item, "w")
     # shutil.copy("C:\\SWDevelopment\\ULActions\\" + item, "C:\\SWDevelopment\\ulactionssaved\\" + item)
     # f.close()
